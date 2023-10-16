@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Bản quyền © Magento, Inc. Tất cả các quyền đã được bảo lưu.
+ * Xem COPYING.txt để biết chi tiết về giấy phép.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <head>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js" src_type="url" type="text/javascript" />
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" src_type="url" type="text/javascript" />
+    <script src="slick-1.8.1/slick/slick.min.js" type="text/javascript" />
+    <script src="js/main.js" type="text/javascript" />
+    <css src="slick-1.8.1/slick/slick.css"/>
+    <css src="slick-1.8.1/slick/slick-theme.css"/>
+    <css src="css/custom.css" />
+    <css src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" src_type="url" />
+  </head>
+    <body>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/mylogo.png</argument>
+                <argument name="logo_img_width" xsi:type="number">300</argument>
+                <argument name="logo_img_height" xsi:type="number">77</argument>
+                <argument name="logo_alt" xsi:type="string">Cocoro</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceContainer name="header.container">
+            <!-- Đây là referenceContainer cho banner quảng cáo -->
+            <!-- <block class="Magento\Framework\View\Element\Template" name="ad.banner" template="Magento_Theme::html/header-banner.phtml" before="header.panel.wrapper"/> -->
+            <container name="header.panel.wrapper" htmlClass="panel wrapper" htmlTag="div" before="-">
+                 <container name="header.panel" label="Page Header Panel" htmlTag="div" htmlClass="panel header"> 
+                    <block class="Magento\Store\Block\Switcher" name="store_language" as="store_language" template="Magento_Store::switch/languages.phtml">
+                        <arguments>
+                            <argument name="view_model" xsi:type="object">Magento\Store\ViewModel\SwitcherUrlProvider</argument>
+                        </arguments>
+                    </block>                  
+                </container>              
+            </container>               
+        </referenceContainer>      
+        <referenceContainer name="page.top">
+            <block class="Magento\Framework\View\Element\Template" name="ad.banner" template="Magento_Theme::html/slider.phtml" />       
+        </referenceContainer>
+    </body>
+</page>
