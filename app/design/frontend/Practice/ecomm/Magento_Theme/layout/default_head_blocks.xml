@@ -1,0 +1,15 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="css/custom.css"/> 
+        <css src="slick-1.8.1/slick/slick.css" />  
+        <css src="slick-1.8.1/slick/slick-theme.css" />   
+        <link src="js/main.js"/>
+        
+        <!-- Add external resources -->
+        <script src="//code.jquery.com/jquery-1.11.0.min.js" src_type="url" type="text/javascript" />
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" src_type="url" type="text/javascript" />
+        <css src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" src_type="url" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" src_type="url" />
+        <link rel="stylesheet" type="text/css" src="http://fonts.googleapis.com/css?family=Montserrat" src_type="url" /> 
+    </head>
+</page>

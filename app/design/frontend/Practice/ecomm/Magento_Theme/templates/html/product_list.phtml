@@ -1,0 +1,17 @@
+<?php
+$productId = 2058; 
+$block = $block->getLayout()->createBlock('Practice\ecomm\Block\ProductList');
+$product = $block->abc($productId);
+?>
+
+<?php if ($product): ?>
+    <div class="product-info">
+        <h1><?= $product->getName() ?></h1>
+        <p>SKU: <?= $product->getSku() ?></p>
+        <p>Giá: <?= $product->getPrice() ?></p>
+        <!-- Hiển thị các thông tin khác của sản phẩm -->
+    </div>
+<?php else: ?>
+    <p>Sản phẩm không tồn tại.</p>
+<?php endif; ?>
+
