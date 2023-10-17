@@ -1,6 +1,13 @@
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+require(['jquery', 'slick'], function ($) {
+    $(document).ready(function () {
 $('.wrapper').slick({
-slidesToShow: 1,
-slidesToScroll: 1,
-autoplay: true,
-autoplaySpeed: 2000,
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    adaptiveHeight: true
+});
+});
 });

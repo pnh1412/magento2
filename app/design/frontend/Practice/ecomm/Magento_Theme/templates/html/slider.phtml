@@ -1,7 +1,19 @@
 
 <div class="wrapper">
     <img src="<?php echo $block->getViewFileUrl('images/B2B-PC-VN.png'); ?>" alt="Image 1" />
-    <img src="<?php echo $block->getViewFileUrl('images/W4_mb_vn.jpg'); ?>" alt="Image 2" />
+
+</div>
+<div class="banner">
+<img src="<?php echo $block->getViewFileUrl('images/W4_mb_vn.jpg'); ?>" alt="Image 2" />
     <img src="<?php echo $block->getViewFileUrl('images/W3_pc_vn.jpg'); ?>" alt="Image 3" />
 </div>
+<script>
+$('.wrapper').slick({
+  dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  adaptiveHeight: true
+});
 
+</script>

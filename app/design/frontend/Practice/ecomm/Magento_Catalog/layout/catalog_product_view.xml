@@ -1,0 +1,5 @@
+<block class="Magento\Catalog\Block\Product\View" name="product.category.block" template="Magento_Catalog::product/view/customcategory.phtml" after="-">
+    <arguments>
+        <argument name="product" xsi:type="object">Magento\Catalog\Block\Product\View</argument>
+    </arguments>
+</block>

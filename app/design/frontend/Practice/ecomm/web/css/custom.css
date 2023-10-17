@@ -4,3 +4,26 @@
 .panel.header{
     text-align: right;
 }
+.wrapper {
+    float: left;
+}
+
+.banner {
+    float: right;
+}
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px; 
+}
+
+.menu-item {
+    text-align: center;
+}
+
+.menu-item img {
+    width: 100%;
+    max-width: 200px; 
+    height: auto;
+}
+
