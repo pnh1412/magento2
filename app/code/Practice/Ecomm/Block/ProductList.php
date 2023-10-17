@@ -1,10 +1,10 @@
 <?php 
-namespace Practice\ecomm\Block;
+namespace Practice\Ecomm\Block;
 
 use Magento\Framework\View\Element\Template;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 
-class ProductList extends Template
+class ProductList extends \Magento\Framework\View\Element\Template
 {
     protected $productCollectionFactory;
 

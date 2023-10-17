@@ -26,7 +26,7 @@
             <block class="Magento\Framework\View\Element\Template" name="slider" template="Magento_Theme::html/slider.phtml"/>
             <block class="Magento\Framework\View\Element\Template" name="selling.feature" template="Magento_Theme::html/selling-feature.phtml"/>
             <block class="Magento\Framework\View\Element\Template" name="top.menu" template="Magento_Theme::html/topmenu.phtml"/>
-            <block class="Practice\ecomm\Block\ProductList" name="practice.ecomm.product.list" template="Magento_Theme::html/product_list.phtml"/>
+            <block class="Practice\Ecomm\Block\ProductList" name="practice.ecomm.product.list" template="Magento_Theme::html/product_list.phtml"/>
         </referenceContainer> 
     </body>
 </page>

@@ -352,6 +352,7 @@ return [
         'Mageplaza_Smtp' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
+        'Practice_Ecomm' => 1,
         'Temando_ShippingRemover' => 1
     ]
 ];
