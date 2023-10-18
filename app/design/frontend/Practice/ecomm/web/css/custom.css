@@ -36,3 +36,8 @@
     width: 100%;
     height: 70px;
 }
+
+.wrapper img {
+    height: 300px;
+    width: 100%;
+}
