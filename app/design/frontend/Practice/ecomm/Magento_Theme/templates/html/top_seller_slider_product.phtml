@@ -1,37 +1,40 @@
-
-
 <?php
 $imagewidth = 200;
 $imageheight = 200;
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $imageHelper = $objectManager->get('Magento\Catalog\Helper\Image');
 $productRepository = $objectManager->get('Magento\Catalog\Model\ProductRepository');
-
-$randomProductIds = [47, 48, 49, 50, 51]; 
-
-foreach ($randomProductIds as $productId) {
-    $block = $block->getLayout()->createBlock('Practice\ecomm\Block\ProductList');
-    $product = $block->abc($productId);
-    // $product = $productRepository->getById($productId);
-
-    if ($product && $product->getImage()) {
-        $image_url = $imageHelper->init($product, 'product_thumbnail_image')
-            ->setImageFile($product->getImage())
-            ->resize($imagewidth, $imageheight)
-            ->getUrl();
-        ?>
-        <div class="top-seller-product-info">
-            <img src="<?= $image_url ?>" alt="<?= $product->getName() ?>">
-            <h4><?= $product->getName() ?></h4>
-            <p>SKU: <?= $product->getSku() ?></p>
-            <p>Giá: <?= $product->getPrice() ?></p>
-        </div>
-        <?php
-    } else {
-        ?>
-        <p>Sản phẩm không tồn tại hoặc không có hình ảnh.</p>
-        <?php
-    }
-}
+$randomProductIds = [47, 48, 49, 50, 51,52, 53, 54, 55];
 ?>
-
+<div class="product">
+<div class="product-title">
+    <h2>Bán chạy nhất</h2>
+</div>
+<div class="product-container">
+    <?php
+    foreach ($randomProductIds as $productId) {
+        $block = $block->getLayout()->createBlock('Practice\ecomm\Block\ProductList');
+        $product = $block->abc($productId);
+        // $product = $productRepository->getById($productId);
+        if ($product && $product->getImage()) {
+            $image_url = $imageHelper->init($product, 'product_thumbnail_image')
+                ->setImageFile($product->getImage())
+                ->resize($imagewidth, $imageheight)
+                ->getUrl();
+            ?>
+            <div class="product-info">
+                <img src="<?= $image_url ?>" alt="<?= $product->getName() ?>">
+                <h4><?= $product->getName() ?></h4>
+                <p>SKU: <?= $product->getSku() ?></p>
+                <p>Giá: <?= $product->getPrice() ?></p>
+            </div>
+            <?php
+        } else {
+            ?>
+            <p>Sản phẩm không tồn tại hoặc không có hình ảnh.</p>
+            <?php
+        }
+    }
+    ?>
+</div>
+</div>

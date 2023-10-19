@@ -2,7 +2,7 @@
     <body>
      <referenceBlock name="logo">
             <arguments>
-                <argument name="logo_file" xsi:type="string">images/maylogo.png</argument>
+                <argument name="logo_file" xsi:type="string">images/mylogo.png</argument>
                 <argument name="logo_img_width" xsi:type="number">300</argument>
                 <argument name="logo_img_height" xsi:type="number">77</argument>
                 <argument name="logo_alt" xsi:type="string">Cocoro</argument>
@@ -23,14 +23,19 @@
             </container>               
         </referenceContainer>     
         <referenceContainer name="page.top">
-            <block class="Magento\Framework\View\Element\Template" name="slider" template="Magento_Theme::html/slider.phtml"/>
-            <block class="Magento\Framework\View\Element\Template" name="selling.feature" template="Magento_Theme::html/selling-feature.phtml"/>
-            <block class="Magento\Framework\View\Element\Template" name="top.menu" template="Magento_Theme::html/topmenu.phtml"/>
+            <container name="body.wrapper" htmlClass="body wrapper" htmlTag="div">
+                <block class="Magento\Framework\View\Element\Template" name="slider" template="Magento_Theme::html/slider.phtml" before="-"/>
+                <block class="Magento\Framework\View\Element\Template" name="selling.feature" template="Magento_Theme::html/selling-feature.phtml" after="slider"/>
+                <!-- <block class="Magento\Framework\View\Element\Template" name="top.menu" template="Magento_Theme::html/topmenu.phtml" after="selling.feature"/> -->
+                     <block class="Practice\Ecomm\Block\ProductList" name="best.price.slider.product" template="Magento_Theme::html/best_price_slider_product.phtml"/>
+                <block class="Practice\Ecomm\Block\ProductList" name="top.seller.slider.product" template="Magento_Theme::html/top_seller_slider_product.phtml"/>
+            </container>
         </referenceContainer> 
-        <referenceContainer name="main">
-            <block class="Practice\Ecomm\Block\ProductList" name="best.price.slider.product" template="Magento_Theme::html/best_price_slider_product.phtml"/>
-            <block class="Practice\Ecomm\Block\ProductList" name="top.seller.slider.product" template="Magento_Theme::html/top_seller_slider_product.phtml"/>
-        </referenceContainer> 
+        <move element="navigation.sections" destination="body.wrapper" after="selling.feature" />
+            <!-- <block class="Magento\Framework\View\Element\Template" name="custom.menu.title" template="Magento_Theme::menu-title.phtml" before="navigation.sections"/> -->
+            <!-- <referenceContainer name="main">
+               
+            </referenceContainer>  -->
         <referenceContainer name="footer-container">
                 <referenceBlock name="footer_links">
                     <referenceBlock name="search-term-popular-link" remove="true"/>

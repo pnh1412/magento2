@@ -19,6 +19,15 @@
  *
  */
 module.exports = {
+    ecomm: {
+        area: 'frontend',
+        name: 'Practice/ecomm',
+        locale: 'vi_VN',
+        files: [           
+            'css/custom',
+        ],
+        dsl: 'less'
+    },
     blank: {
         area: 'frontend',
         name: 'Magento/blank',
@@ -50,5 +59,6 @@ module.exports = {
             'css/styles'
         ],
         dsl: 'less'
-    }
+    },
+   
 };
