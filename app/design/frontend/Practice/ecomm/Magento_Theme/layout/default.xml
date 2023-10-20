@@ -8,33 +8,48 @@
                 <argument name="logo_alt" xsi:type="string">Cocoro</argument>
             </arguments>
         </referenceBlock>
+        <container name="header.banner" as="headerBanner" label="Header Banner Container" htmlTag="div" htmlClass="header-banner" before="-">
+                    <block class="Magento\Framework\View\Element\Template" name="ad.banner" template="Magento_Theme::html/header-banner.phtml" before="-"/>
+        </container>
+        <referenceContainer name="header.panel.wrapper">
+               
+                <container name="languages" as="languages" label="Header Languages Container" htmlTag="div" htmlClass="languages"/>
+                <container name="header.inner.container" as="headerInnerContainer" label="Header Inner Container" htmlTag="div" htmlClass="header-inner-container">
+                    <container name="header.logo" as="logo" label="Header Logo" htmlTag="div" htmlClass="header-logo"/>
+                    <container name="header.search" as="search" label="Header Search Bar" htmlTag="div" htmlClass="header-search"/>
+                    <container name="header.icon" as="icon" label="Header Icon" htmlTag="div" htmlClass="header-icon">
+                        <container name="header.icon.wishlist" as="headerLogo" label="Header Icon Wishlist" htmlTag="div" htmlClass="header-logo"/>
+                        <container name="header.icon.minicart" as="headerMinicart" label="Header Icon Minicart" htmlTag="div" htmlClass="header-search"/>
+                        <container name="header.icon.account" as="headerAccount" label="Header Icon Account" htmlTag="div" htmlClass="header-icon">
+                            <container name="header.icon.account.register" as="headerAccountRegister" label="Header Icon Account Register" htmlTag="div" htmlClass="register"/>
+                            <container name="header.icon.account.login" as="headerAccountLogin" label="Header Icon Account Login" htmlTag="div" htmlClass="login"/>
+                        </container>
+                    </container>
+                </container>
+                <container name="navigation.menu" as="navigation" label="Header Navigation Container" htmlTag="div" htmlClass="navigation-menu"/>
+        </referenceContainer> 
+        <move element="header" destination="languages" />
+        <move element="logo" destination="header.logo" />
+        <move element= "top.search" destination="header.search"/>
+        <move element= "minicart" destination="header.icon.minicart"/>
+        <move element= "my-account-link" destination="header.icon.account"/>
+        <move element= "wish-list-link" destination="header.icon.wishlist"/>
+        <move element= "register-link" destination="header.icon.account.register"/>
+        <move element= "authorization-link" destination="header.icon.account.login"/>
+        <move element= "header.banner" destination="header.container" before="-"/>
 
-        <referenceContainer name="header.container">
-            <container name="header.banner" as="someContainer" label="Header Banner Container" htmlTag="div" htmlClass="header-banner" before="-">
-            <!-- Đây là referenceContainer cho banner quảng cáo -->
-                <block class="Magento\Framework\View\Element\Template" name="ad.banner" template="Magento_Theme::html/header-banner.phtml" before="header.panel.wrapper"/>
-            </container>
-                <container name="header.panel.wrapper" htmlClass="panel wrapper" htmlTag="div" before="-">
-                    <container name="header.panel" label="Page Header Panel" htmlTag="div" htmlClass="panel header"> 
-                    <block class="Magento\Store\Block\Switcher" name="store_language" as="store_language" template="Magento_Store::switch/languages.phtml">
-                        <arguments>
-                            <argument name="view_model" xsi:type="object">Magento\Store\ViewModel\SwitcherUrlProvider</argument>
-                        </arguments>
-                    </block>                  
-                </container>              
-            </container>               
-        </referenceContainer>     
-        <referenceContainer name="page.top">
+        <!-- <referenceContainer name="page.top">
             <container name="body.wrapper" htmlClass="body wrapper" htmlTag="div">
-                <block class="Magento\Framework\View\Element\Template" name="slider" template="Magento_Theme::html/slider.phtml" before="-"/>
-                <block class="Magento\Framework\View\Element\Template" name="selling.feature" template="Magento_Theme::html/selling-feature.phtml" after="slider"/>
-                <!-- <block class="Magento\Framework\View\Element\Template" name="top.menu" template="Magento_Theme::html/topmenu.phtml" after="selling.feature"/> -->
+                
                    
             </container>
-        </referenceContainer> 
-        <move element="navigation.sections" destination="body.wrapper" after="selling.feature" />
+        </referenceContainer>  -->
             <!-- <block class="Magento\Framework\View\Element\Template" name="custom.menu.title" template="Magento_Theme::menu-title.phtml" before="navigation.sections"/> -->
+            <!-- <move element="navigation.sections" destination="body.wrapper" after="selling.feature" /> -->
             <referenceContainer name="main">
+                <block class="Magento\Framework\View\Element\Template" name="slider" template="Magento_Theme::html/slider.phtml" before="-"/>
+                <block class="Magento\Framework\View\Element\Template" name="selling.feature" template="Magento_Theme::html/selling-feature.phtml" after="slider"/>
+                <block class="Magento\Framework\View\Element\Template" name="top.categories" template="Magento_Theme::html/top-categories.phtml" after="selling.feature"/>
                 <block class="Practice\Ecomm\Block\ProductList" name="best.price.slider.product" template="Magento_Theme::html/best_price_slider_product.phtml"/>
                 <block class="Practice\Ecomm\Block\ProductList" name="top.seller.slider.product" template="Magento_Theme::html/top_seller_slider_product.phtml"/>
                 <block class="Magento\Framework\View\Element\Template" name="image" template="Magento_Theme::html/image.phtml" after="-"/>
