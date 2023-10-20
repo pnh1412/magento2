@@ -10,10 +10,12 @@
         </referenceBlock>
 
         <referenceContainer name="header.container">
-          <!-- Đây là referenceContainer cho banner quảng cáo -->
-            <block class="Magento\Framework\View\Element\Template" name="ad.banner" template="Magento_Theme::html/header-banner.phtml" before="header.panel.wrapper"/>
+            <container name="header.banner" as="someContainer" label="Header Banner Container" htmlTag="div" htmlClass="header-banner" before="-">
+            <!-- Đây là referenceContainer cho banner quảng cáo -->
+                <block class="Magento\Framework\View\Element\Template" name="ad.banner" template="Magento_Theme::html/header-banner.phtml" before="header.panel.wrapper"/>
+            </container>
                 <container name="header.panel.wrapper" htmlClass="panel wrapper" htmlTag="div" before="-">
-                 <container name="header.panel" label="Page Header Panel" htmlTag="div" htmlClass="panel header"> 
+                    <container name="header.panel" label="Page Header Panel" htmlTag="div" htmlClass="panel header"> 
                     <block class="Magento\Store\Block\Switcher" name="store_language" as="store_language" template="Magento_Store::switch/languages.phtml">
                         <arguments>
                             <argument name="view_model" xsi:type="object">Magento\Store\ViewModel\SwitcherUrlProvider</argument>
@@ -27,15 +29,17 @@
                 <block class="Magento\Framework\View\Element\Template" name="slider" template="Magento_Theme::html/slider.phtml" before="-"/>
                 <block class="Magento\Framework\View\Element\Template" name="selling.feature" template="Magento_Theme::html/selling-feature.phtml" after="slider"/>
                 <!-- <block class="Magento\Framework\View\Element\Template" name="top.menu" template="Magento_Theme::html/topmenu.phtml" after="selling.feature"/> -->
-                     <block class="Practice\Ecomm\Block\ProductList" name="best.price.slider.product" template="Magento_Theme::html/best_price_slider_product.phtml"/>
-                <block class="Practice\Ecomm\Block\ProductList" name="top.seller.slider.product" template="Magento_Theme::html/top_seller_slider_product.phtml"/>
+                   
             </container>
         </referenceContainer> 
         <move element="navigation.sections" destination="body.wrapper" after="selling.feature" />
             <!-- <block class="Magento\Framework\View\Element\Template" name="custom.menu.title" template="Magento_Theme::menu-title.phtml" before="navigation.sections"/> -->
-            <!-- <referenceContainer name="main">
-               
-            </referenceContainer>  -->
+            <referenceContainer name="main">
+                <block class="Practice\Ecomm\Block\ProductList" name="best.price.slider.product" template="Magento_Theme::html/best_price_slider_product.phtml"/>
+                <block class="Practice\Ecomm\Block\ProductList" name="top.seller.slider.product" template="Magento_Theme::html/top_seller_slider_product.phtml"/>
+                <block class="Magento\Framework\View\Element\Template" name="image" template="Magento_Theme::html/image.phtml" after="-"/>
+
+            </referenceContainer> 
         <referenceContainer name="footer-container">
                 <referenceBlock name="footer_links">
                     <referenceBlock name="search-term-popular-link" remove="true"/>
