@@ -20,16 +20,15 @@
                         <container name="header.icon.wishlist" as="headerLogo" label="Header Icon Wishlist" htmlTag="div" htmlClass="header-logo"/>
                         <container name="header.icon.minicart" as="headerMinicart" label="Header Icon Minicart" htmlTag="div" htmlClass="header-minicart"/>
                         <container name="header.icon.account" as="headerAccount" label="Header Icon Account" htmlTag="div" htmlClass="header-icon-account">
-                            <container name="icon.account.list" htmlTag="ul">
                                 <container name="header.icon.account.register" as="headerAccountRegister" label="Header Icon Account Register" htmlTag="div" htmlClass="register"/>
                                 <container name="header.icon.account.login" as="headerAccountLogin" label="Header Icon Account Login" htmlTag="div" htmlClass="login"/>
-                            </container>
                         </container>
                     </container>
                 </container>
             </container>
         </referenceContainer>
         <container name="navigation.menu" as="navigation" label="Header Navigation Container" htmlTag="div" htmlClass="navigation-menu"/>
+        <referenceBlock name="advanced-search-link" remove="true"/>
         <move element="logo" destination="header.logo" />
         <move element= "top.search" destination="header.search"/>
         <move element= "minicart" destination="header.icon.minicart"/>
