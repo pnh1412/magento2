@@ -1,0 +1,46 @@
+<?php
+$imagewidth = 200;
+$imageheight = 200;
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$imageHelper = $objectManager->get('Magento\Catalog\Helper\Image');
+$productRepository = $objectManager->get('Magento\Catalog\Model\ProductRepository');
+$randomProductIds = [701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713];
+?>
+<div class="product">
+<div class="product-title">
+    <h2>Hóa mỹ phẩm</h2>
+</div>
+<div class="product-container">
+    <?php
+    foreach ($randomProductIds as $productId) {
+        $block = $block->getLayout()->createBlock('Practice\ecomm\Block\ProductList');
+        $product = $block->abc($productId);
+        // $product = $productRepository->getById($productId);
+        if ($product && $product->getImage()) {
+            $image_url = $imageHelper->init($product, 'product_thumbnail_image')
+                ->setImageFile($product->getImage())
+                ->resize($imagewidth, $imageheight)
+                ->getUrl();
+            ?>
+            <div class="product-info">
+                <div class="product-image">
+                    <img src="<?= $image_url ?>" alt="<?= $product->getName() ?>">
+                    <div class="product-actions">
+                        <div class="cart-button"><i class="fa fa-shopping-cart"></i></div>
+                        <div class="wishlist-button"><i class="fa-regular fa-heart"></i></div>
+                    </div>
+                </div>
+                <h4><?= $product->getName() ?></h4>
+                <p>SKU: <?= $product->getSku() ?></p>
+                <p>Giá: <?= $product->getPrice() ?></p>
+            </div>
+            <?php
+        } else {
+            ?>
+            <p>Sản phẩm không tồn tại hoặc không có hình ảnh.</p>
+            <?php
+        }
+    }
+    ?>
+</div>
+</div>

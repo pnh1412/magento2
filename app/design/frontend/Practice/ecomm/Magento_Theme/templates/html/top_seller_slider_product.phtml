@@ -23,7 +23,13 @@ $randomProductIds = [47, 48, 49, 50, 51,52, 53, 54, 55];
                 ->getUrl();
             ?>
             <div class="product-info">
-                <img src="<?= $image_url ?>" alt="<?= $product->getName() ?>">
+                <div class="product-image">
+                    <img src="<?= $image_url ?>" alt="<?= $product->getName() ?>">
+                    <div class="product-actions">
+                        <div class="cart-button"><i class="fa fa-shopping-cart"></i></div>
+                        <div class="wishlist-button"><i class="fa-regular fa-heart"></i></div>
+                    </div>
+                </div>
                 <h4><?= $product->getName() ?></h4>
                 <p>SKU: <?= $product->getSku() ?></p>
                 <p>Giá: <?= $product->getPrice() ?></p>

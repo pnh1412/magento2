@@ -11,24 +11,25 @@
         <container name="header.banner" as="headerBanner" label="Header Banner Container" htmlTag="div" htmlClass="header-banner" before="-">
                     <block class="Magento\Framework\View\Element\Template" name="ad.banner" template="Magento_Theme::html/header-banner.phtml" before="-"/>
         </container>
-        <referenceContainer name="header.panel.wrapper">
-               
-                <container name="languages" as="languages" label="Header Languages Container" htmlTag="div" htmlClass="languages"/>
-                <container name="header.inner.container" as="headerInnerContainer" label="Header Inner Container" htmlTag="div" htmlClass="header-inner-container">
+        <referenceContainer name="header.container">
+            <container name="header.inner.container" as="headerInnerContainer" label="Header Inner Container" htmlTag="div" htmlClass="header-inner-container">
+                <container name="header.block" as="headerBlock" label="Header Block" htmlTag="div" htmlClass="header-block">
                     <container name="header.logo" as="logo" label="Header Logo" htmlTag="div" htmlClass="header-logo"/>
                     <container name="header.search" as="search" label="Header Search Bar" htmlTag="div" htmlClass="header-search"/>
                     <container name="header.icon" as="icon" label="Header Icon" htmlTag="div" htmlClass="header-icon">
                         <container name="header.icon.wishlist" as="headerLogo" label="Header Icon Wishlist" htmlTag="div" htmlClass="header-logo"/>
-                        <container name="header.icon.minicart" as="headerMinicart" label="Header Icon Minicart" htmlTag="div" htmlClass="header-search"/>
-                        <container name="header.icon.account" as="headerAccount" label="Header Icon Account" htmlTag="div" htmlClass="header-icon">
-                            <container name="header.icon.account.register" as="headerAccountRegister" label="Header Icon Account Register" htmlTag="div" htmlClass="register"/>
-                            <container name="header.icon.account.login" as="headerAccountLogin" label="Header Icon Account Login" htmlTag="div" htmlClass="login"/>
+                        <container name="header.icon.minicart" as="headerMinicart" label="Header Icon Minicart" htmlTag="div" htmlClass="header-minicart"/>
+                        <container name="header.icon.account" as="headerAccount" label="Header Icon Account" htmlTag="div" htmlClass="header-icon-account">
+                            <container name="icon.account.list" htmlTag="ul">
+                                <container name="header.icon.account.register" as="headerAccountRegister" label="Header Icon Account Register" htmlTag="div" htmlClass="register"/>
+                                <container name="header.icon.account.login" as="headerAccountLogin" label="Header Icon Account Login" htmlTag="div" htmlClass="login"/>
+                            </container>
                         </container>
                     </container>
                 </container>
-                <container name="navigation.menu" as="navigation" label="Header Navigation Container" htmlTag="div" htmlClass="navigation-menu"/>
-        </referenceContainer> 
-        <move element="header" destination="languages" />
+            </container>
+        </referenceContainer>
+        <container name="navigation.menu" as="navigation" label="Header Navigation Container" htmlTag="div" htmlClass="navigation-menu"/>
         <move element="logo" destination="header.logo" />
         <move element= "top.search" destination="header.search"/>
         <move element= "minicart" destination="header.icon.minicart"/>
@@ -38,23 +39,22 @@
         <move element= "authorization-link" destination="header.icon.account.login"/>
         <move element= "header.banner" destination="header.container" before="-"/>
 
-        <!-- <referenceContainer name="page.top">
-            <container name="body.wrapper" htmlClass="body wrapper" htmlTag="div">
-                
-                   
-            </container>
-        </referenceContainer>  -->
-            <!-- <block class="Magento\Framework\View\Element\Template" name="custom.menu.title" template="Magento_Theme::menu-title.phtml" before="navigation.sections"/> -->
-            <!-- <move element="navigation.sections" destination="body.wrapper" after="selling.feature" /> -->
-            <referenceContainer name="main">
-                <block class="Magento\Framework\View\Element\Template" name="slider" template="Magento_Theme::html/slider.phtml" before="-"/>
-                <block class="Magento\Framework\View\Element\Template" name="selling.feature" template="Magento_Theme::html/selling-feature.phtml" after="slider"/>
-                <block class="Magento\Framework\View\Element\Template" name="top.categories" template="Magento_Theme::html/top-categories.phtml" after="selling.feature"/>
-                <block class="Practice\Ecomm\Block\ProductList" name="best.price.slider.product" template="Magento_Theme::html/best_price_slider_product.phtml"/>
-                <block class="Practice\Ecomm\Block\ProductList" name="top.seller.slider.product" template="Magento_Theme::html/top_seller_slider_product.phtml"/>
-                <block class="Magento\Framework\View\Element\Template" name="image" template="Magento_Theme::html/image.phtml" after="-"/>
+        <referenceBlock name="register-link">
+             <arguments>
+                <argument name="template" xsi:type="string">Magento_Theme::html/register.phtml</argument>
+            </arguments>
+        </referenceBlock>
 
-            </referenceContainer> 
+        <referenceContainer name="main">
+            <block class="Magento\Framework\View\Element\Template" name="slider" template="Magento_Theme::html/slider.phtml" before="-"/>
+            <block class="Magento\Framework\View\Element\Template" name="selling.feature" template="Magento_Theme::html/selling-feature.phtml" after="slider"/>
+            <block class="Magento\Framework\View\Element\Template" name="top.categories" template="Magento_Theme::html/top-categories.phtml" after="selling.feature"/>
+            <block class="Practice\Ecomm\Block\ProductList" name="best.price.slider.product" template="Magento_Theme::html/best_price_slider_product.phtml"/>
+            <block class="Practice\Ecomm\Block\ProductList" name="top.seller.slider.product" template="Magento_Theme::html/top_seller_slider_product.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="image" template="Magento_Theme::html/image.phtml" />
+            <block class="Practice\Ecomm\Block\ProductList" name="product" template="Magento_Theme::html/product.phtml"/>
+
+        </referenceContainer>
         <referenceContainer name="footer-container">
                 <referenceBlock name="footer_links">
                     <referenceBlock name="search-term-popular-link" remove="true"/>
@@ -63,65 +63,142 @@
                     <referenceBlock name="sales-guest-form-link" remove="true"/>
                     <referenceBlock name="report.bugs" remove="true"/>
                     <referenceBlock name="form.subscribe" remove="true"/>
-                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="term.policies.footer">
-                        <arguments>
-                            <argument name="label" xsi:type="string" translate="true">Điều khoản dịch vụ &amp; quy định chung</argument>
-                            <argument name="path" xsi:type="string">term-policies</argument>
-                            <argument name="attributes" xsi:type="array">
-                                <item name="target" xsi:type="string">_blank</item>
-                            </argument>
-                        </arguments>
-
-                    </block>
-
-                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="security.policy.footer">
-                        <arguments>
-                            <argument name="label" xsi:type="string" translate="true">Chính sách bảo mật thông tin</argument>
-                            <argument name="path" xsi:type="string">security-policy</argument>
-                            <argument name="attributes" xsi:type="array">
-                                <item name="target" xsi:type="string">_blank</item>
-                            </argument>
-                        </arguments>
-                    </block>
-
-                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="trade.policy.footer">
-                        <arguments>
-                            <argument name="label" xsi:type="string" translate="true">Chính sách chuyên-đổi-trả-bảo hàng</argument>
-                            <argument name="path" xsi:type="string">trade-policy</argument>
-                            <argument name="attributes" xsi:type="array">
-                                <item name="target" xsi:type="string">_blank</item>
-                            </argument>
-                        </arguments>
-                    </block>
-
-                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="payment.method.footer">
-                        <arguments>
-                            <argument name="label" xsi:type="string" translate="true">Phương thức thanh toán</argument>
-                            <argument name="path" xsi:type="string">payment-method</argument>
-                            <argument name="attributes" xsi:type="array">
-                                <item name="target" xsi:type="string">_blank</item>
-                            </argument>
-                        </arguments>
-                    </block>
-
-                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer.policy.footer">
-                        <arguments>
-                            <argument name="label" xsi:type="string" translate="true">Chương trình khách hàng thân thiết</argument>
-                            <argument name="path" xsi:type="string">customer-policy</argument>
-                            <argument name="attributes" xsi:type="array">
-                                <item name="target" xsi:type="string">_blank</item></argument>
-                            </arguments>             
-                    </block>
-
+                    <!-- <referenceBlock name="copyright" remove="true"/> -->
+                    <referenceBlock name="report.bugs" remove="true"/>
                 </referenceBlock>
-                <block class="Magento\Theme\Block\Html\Footer" name="copyright" template="Magento_Theme::html/copyright.phtml"/>
-
-                <container name="some.container" as="someContainer" label="Some Container" htmlTag="div" htmlClass="some-container">
+            <container name="footer" as="footer" label="Page Footer" htmlTag="div" htmlClass="footer content">
+                <container name="footer.wrapper" as="footer.wrapper" label="Footer Wrapper" htmlTag="div" htmlClass="footer-wrapper">
+                    <container name="footer.policy" as="termPolicy" label="Footer Policy Container" htmlTag="div" htmlClass="footer-policy">
+                        <container name="policy_list" htmlTag="ul">
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="policy.title.footer">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">TRUY CẬP NHANH</argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="term.policies.footer">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">Điều khoản dịch vụ &amp; quy định chung</argument>
+                                    <argument name="path" xsi:type="string">term-policies</argument>
+                                    <argument name="attributes" xsi:type="array">
+                                        <item name="target" xsi:type="string">_blank</item>
+                                    </argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="security.policy.footer">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">Chính sách bảo mật thông tin</argument>
+                                    <argument name="path" xsi:type="string">security-policy</argument>
+                                    <argument name="attributes" xsi:type="array">
+                                        <item name="target" xsi:type="string">_blank</item>
+                                    </argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="trade.policy.footer">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">Chính sách chuyên-đổi-trả-bảo hàng</argument>
+                                    <argument name="path" xsi:type="string">trade-policy</argument>
+                                    <argument name="attributes" xsi:type="array">
+                                        <item name="target" xsi:type="string">_blank</item>
+                                    </argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="payment.method.footer">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">Phương thức thanh toán</argument>
+                                    <argument name="path" xsi:type="string">payment-method</argument>
+                                    <argument name="attributes" xsi:type="array">
+                                        <item name="target" xsi:type="string">_blank</item>
+                                    </argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer.policy.footer">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">Chương trình khách hàng thân thiết</argument>
+                                    <argument name="path" xsi:type="string">customer-policy</argument>
+                                    <argument name="attributes" xsi:type="array">
+                                        <item name="target" xsi:type="string">_blank</item></argument>
+                                    </arguments>
+                            </block>
+                        </container>
+                    </container>
+                    <container name="footer.contact" as="contactUs" label="Footer contact Container" htmlTag="div" htmlClass="footer-contact">
+                         <container name="contact_list" htmlTag="ul">
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="contact.title.footer">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">COCORO LIFE VIỆT NAM</argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="contact.us.footer">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">Về COCORO Life Việt Nam</argument>
+                                    <argument name="path" xsi:type="string">contact-us</argument>
+                                    <argument name="attributes" xsi:type="array">
+                                        <item name="target" xsi:type="string">_blank</item></argument>
+                                    </arguments>
+                                </block>
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="buyer.guide.footer">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">Hướng dẫn mua hàng và bảo hành</argument>
+                                    <argument name="path" xsi:type="string">buyer-guide</argument>
+                                    <argument name="attributes" xsi:type="array">
+                                        <item name="target" xsi:type="string">_blank</item></argument>
+                                    </arguments>
+                                </block>
+                        </container>
+                    </container>
+                    <container name="social_media_icons" as="socialMediaIcons" label="Social Media Icons Container" htmlTag="div" htmlClass="social-media-icons">
+                        <container name="social_media_icons_list" htmlTag="ul">
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="social.media.title.footer">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">Kết nối với chúng tôi</argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Framework\View\Element\Template" name="social.media" template="Magento_Theme::html/social-media.phtml" />
+                            <block class="Magento\Framework\View\Element\Template" name="cod.icon" template="Magento_Theme::html/cod.phtml" />
+                            <block class="Magento\Framework\View\Element\Template" name="credit-card.icon" template="Magento_Theme::html/credit-card.phtml" />
+                        </container>
+                    </container>
+                   <container name="footer.information" as="information" label="Footer Information Container" htmlTag="div" htmlClass="footer-information">
+                        <container name="infomation_list" htmlTag="ul">
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="company.name.footer">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">CÔNG TY TNHH ĐIỆN TỬ SHARP VIỆT NAM</argument>
+                                </arguments>
+                            </block>
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="company.address.footer">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">Địa chỉ: T5-B03.07 &amp; T5-B03.09, Lầu 3 Masteri Thảo Điền</argument>
+                                    <argument name="path" xsi:type="string">address</argument>
+                                    <argument name="attributes" xsi:type="array">
+                                        <item name="target" xsi:type="string">_blank</item>
+                                    </argument>
+                                </arguments>  
+                            </block>
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="company.contact.footer">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">159 Võ Nguyên Giáp, Phường Thảo Điền, T.P Thủ Đức, T.P Hồ Chí Minh, Việt Nam 
+                                    Email: cskh@cocorolife.vn</argument>
+                                    <argument name="path" xsi:type="string">address</argument>
+                                    <argument name="attributes" xsi:type="array">
+                                        <item name="target" xsi:type="string">_blank</item>
+                                    </argument>
+                                </arguments> 
+                            </block>
+                            <block class="Magento\Framework\View\Element\Html\Link\Current" name="company_mst.footer">
+                                <arguments>
+                                    <argument name="label" xsi:type="string" translate="true">MST: 0308159258 Do Sở kế hoạch Đầu tư TP.HCM cấp ngày 13/3/2009</argument>
+                                    <argument name="path" xsi:type="string">address</argument>
+                                    <argument name="attributes" xsi:type="array">
+                                        <item name="target" xsi:type="string">_blank</item>
+                                    </argument>
+                                </arguments> 
+                            </block>
+                            <block class="Magento\Theme\Block\Html\Footer" name="img.moit" template="Magento_Theme::html/moit.phtml"/>
+                        </container>
+                    </container>
                 </container>
-                    <!-- <block class="Magento\Framework\View\Element\Html\Link\Current" name="about.us" template ="Magento_Contact::html/about-us.phtml">
-                    </block> -->
-
+                    <block class="Magento\Theme\Block\Html\Footer" name="copyright" template="Magento_Theme::html/copyright.phtml"/>
+            </container>
         </referenceContainer>
-        
     </body>
 </page>

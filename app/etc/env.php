@@ -69,8 +69,8 @@ return [
     ],
     'x-frame-options' => 'SAMEORIGIN',
     'MAGE_MODE' => 'developer',
-    'session' =>  [
-        'save' => 'files',
+    'session' => [
+        'save' => 'files'
     ],
     'lock' => [
         'provider' => 'db'
