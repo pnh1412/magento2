@@ -1,0 +1,16 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="main">
+            <block class="Magento\Framework\View\Element\Template" name="slider" template="Magento_Theme::html/slider.phtml" before="-"/>
+            <block class="Magento\Framework\View\Element\Template" name="selling.feature" template="Magento_Theme::html/selling-feature.phtml" after="slider"/>
+            <block class="Magento\Framework\View\Element\Template" name="top.categories" template="Magento_Theme::html/top-categories.phtml" after="selling.feature"/>
+            <block class="Practice\Ecomm\Block\ProductList" name="best.price.slider.product" template="Magento_Theme::html/best_price_slider_product.phtml"/>
+            <block class="Practice\Ecomm\Block\ProductList" name="top.seller.slider.product" template="Magento_Theme::html/top_seller_slider_product.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="image" template="Magento_Theme::html/image.phtml" />
+            <block class="Practice\Ecomm\Block\ProductList" name="product" template="Magento_Theme::html/product.phtml"/>
+        </referenceContainer>
+
+
+
+    </body>
+</page>
