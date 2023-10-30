@@ -1,0 +1,11 @@
+<div id="custom-component" data-bind="scope: 'custom-tutorial'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+
+{
+    "#custom-component": {
+        "Magento_Ui/js/core/app": <?= $block->getJsLayout() ?>
+    }
+}
+</script>

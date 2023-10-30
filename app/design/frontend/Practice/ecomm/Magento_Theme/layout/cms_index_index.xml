@@ -8,9 +8,17 @@
             <block class="Practice\Ecomm\Block\ProductList" name="top.seller.slider.product" template="Magento_Theme::html/top_seller_slider_product.phtml"/>
             <block class="Magento\Framework\View\Element\Template" name="image" template="Magento_Theme::html/image.phtml" />
             <block class="Practice\Ecomm\Block\ProductList" name="product" template="Magento_Theme::html/product.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="custom.component" template="Magento_Theme::html/custom_component.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="custom-tutorial" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Theme/js/customViewModel</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
         </referenceContainer>
-
-
-
     </body>
 </page>
